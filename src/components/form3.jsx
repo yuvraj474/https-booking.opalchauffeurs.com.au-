@@ -12,7 +12,7 @@ const Form3 = () => {
   const [coupon, setCoupon] = useState('')
   const [couponApplied, setCouponApplied] = useState(false)
 
-  const ff = "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
+  const ff = "'Poppins', sans-serif"
 
   // Price breakdown calculation
   const rawPrice = vehicle.price ? parseFloat(vehicle.price.replace(/[^0-9.]/g, '')) : 19372.54
@@ -54,7 +54,7 @@ const Form3 = () => {
             <React.Fragment key={i}>
               <span
                 onClick={b.click}
-                style={{ fontSize: '13px', color: b.active ? '#ff3d5a' : '#6b7280', fontWeight: b.active ? '600' : '400', cursor: b.click ? 'pointer' : 'default' }}
+                style={{ fontSize: '13px', color: b.active ? '1f2937' : '#6b7280', fontWeight: b.active ? '600' : '400', cursor: b.click ? 'pointer' : 'default' }}
               >{b.label}</span>
               {i < arr.length - 1 && <ChevronRight size={12} style={{ color: '#d1d5db' }} />}
             </React.Fragment>
@@ -82,8 +82,8 @@ const Form3 = () => {
               {/* Name + Badge */}
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '4px' }}>
                 <h3 style={{ fontSize: '20px', fontWeight: '700', color: '#111', margin: 0 }}>{vehicle.name || 'Vehicle'}</h3>
-                <span style={{ background: '#ff3d5a', color: '#fff', fontSize: '11px', fontWeight: '600', padding: '3px 10px', borderRadius: '99px', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  🔴 {state.type || 'Oneway'}
+                <span style={{ background: 'black', color: '#fff', fontSize: '11px', fontWeight: '600', padding: '3px 10px', borderRadius: '99px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                   {state.type || 'Oneway'}
                 </span>
               </div>
               <p style={{ fontSize: '13px', color: '#6b7280', margin: '0 0 16px 0' }}>{vehicle.desc || ''}</p>
@@ -160,7 +160,7 @@ const Form3 = () => {
               <div style={{ marginBottom: '16px' }}>
                 <div style={{ fontSize: '12px', fontWeight: '600', color: '#6b7280', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Passenger Information</div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
-                  <div style={{ width: '38px', height: '38px', borderRadius: '50%', background: '#ff3d5a', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '14px', fontWeight: '700', flexShrink: 0 }}>
+                  <div style={{ width: '38px', height: '38px', borderRadius: '50%', background: '#1f2937', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '14px', fontWeight: '700', flexShrink: 0 }}>
                     {initials}
                   </div>
                   <div style={{ fontSize: '15px', fontWeight: '700', color: '#111' }}>{fullName}</div>
@@ -168,7 +168,7 @@ const Form3 = () => {
                 <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: '#374151' }}>
                     <Phone size={13} style={{ color: '#9ca3af' }} />
-                    ({passenger.countryCode || '+91'}) {passenger.phone || '—'}
+                    ({passenger.countryCode || '+61'}) {passenger.phone || '—'}
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: '#374151' }}>
                     <Mail size={13} style={{ color: '#9ca3af' }} />
@@ -208,7 +208,7 @@ const Form3 = () => {
               {/* Coupon Code */}
               <div style={{ marginBottom: '16px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
-                  <Tag size={15} style={{ color: '#ff3d5a' }} />
+                  <Tag size={15} style={{ color: '1f2937' }} />
                   <span style={{ fontSize: '13px', fontWeight: '700', color: '#111' }}>Coupon Code</span>
                 </div>
                 <p style={{ fontSize: '12px', color: '#6b7280', margin: '0 0 10px 0' }}>
@@ -223,7 +223,7 @@ const Form3 = () => {
                   />
                   <button
                     onClick={() => coupon && setCouponApplied(true)}
-                    style={{ background: couponApplied ? '#22c55e' : '#ff3d5a', color: '#fff', border: 'none', borderRadius: '8px', padding: '10px 20px', fontSize: '13px', fontWeight: '600', cursor: 'pointer', fontFamily: ff, whiteSpace: 'nowrap' }}
+                    style={{ background: couponApplied ? '1f2937' : 'black', color: '#fff', border: 'none', borderRadius: '8px', padding: '10px 20px', fontSize: '13px', fontWeight: '600', cursor: 'pointer', fontFamily: ff, whiteSpace: 'nowrap' }}
                   >
                     {couponApplied ? 'Applied ✓' : 'Apply'}
                   </button>
@@ -236,18 +236,18 @@ const Form3 = () => {
               <div style={{ marginBottom: '16px' }}>
                 <div style={{ ...rowStyle, marginBottom: '8px' }}>
                   <span style={{ fontSize: '13.5px', color: '#374151' }}>Trip fare</span>
-                  <span style={{ fontSize: '13.5px', fontWeight: '600', color: '#ff3d5a' }}>INR {tripFare}</span>
+                  <span style={{ fontSize: '13.5px', fontWeight: '600', color: '1f2937' }}>INR {tripFare}</span>
                 </div>
                 <div style={{ ...rowStyle, marginBottom: '4px' }}>
                   <div>
                     <div style={{ fontSize: '13.5px', color: '#374151' }}>Convenience fee</div>
                     <div style={{ fontSize: '11px', color: '#9ca3af' }}>(non-refundable)</div>
                   </div>
-                  <span style={{ fontSize: '13.5px', fontWeight: '600', color: '#ff3d5a' }}>INR {convFee}</span>
+                  <span style={{ fontSize: '13.5px', fontWeight: '600', color: '1f2937' }}>INR {convFee}</span>
                 </div>
                 <div style={rowStyle}>
                   <span style={{ fontSize: '13.5px', color: '#374151' }}>GST</span>
-                  <span style={{ fontSize: '13.5px', fontWeight: '600', color: '#ff3d5a' }}>INR {gst}</span>
+                  <span style={{ fontSize: '13.5px', fontWeight: '600', color: '#1f2937' }}>INR {gst}</span>
                 </div>
               </div>
 
@@ -256,13 +256,13 @@ const Form3 = () => {
               {/* Total Price */}
               <div style={{ ...rowStyle, marginBottom: '20px' }}>
                 <div>
-                  <div style={{ fontSize: '14px', fontWeight: '700', color: '#ff3d5a' }}>Total Price</div>
+                  <div style={{ fontSize: '14px', fontWeight: '700', color: '1f2937' }}>Total Price</div>
                   <div style={{ fontSize: '11px', color: '#9ca3af' }}>Includes GST, Gratuities, Meet & Greet services</div>
                 </div>
-                <div style={{ fontSize: '22px', fontWeight: '800', color: '#111' }}>INR {total}</div>
+                <div style={{ fontSize: '22px', fontWeight: '800', color: '1f2937' }}>INR {total}</div>
               </div>
 
-              {/* Buttons */}
+              {/* Buttowidth: 100%; background: rgba(0, 0, 0, 1); color: rgb(255, 255, 255); border: medium; border-radius: 8px; padding: 11px 0px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 0.2s;ns */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
                 <button
                   onClick={() => navigate(-1)}
@@ -274,9 +274,9 @@ const Form3 = () => {
                 </button>
                 <button
                   onClick={() => alert('🎉 Booking Confirmed! Thank you for choosing Drivado.')}
-                  style={{ padding: '13px', background: '#ff3d5a', color: '#fff', border: 'none', borderRadius: '8px', fontSize: '14px', fontWeight: '700', cursor: 'pointer', fontFamily: ff, transition: 'background 0.2s' }}
-                  onMouseEnter={e => e.currentTarget.style.background = '#e02f4a'}
-                  onMouseLeave={e => e.currentTarget.style.background = '#ff3d5a'}
+                  style={{ padding: '13px', background: '#1f2937', color: '#fff', border: 'none', borderRadius: '8px', fontSize: '14px', fontWeight: '700', cursor: 'pointer', fontFamily: ff, transition: 'background 0.2s' }}
+                  onMouseEnter={e => e.currentTarget.style.background = '#000'}
+                  onMouseLeave={e => e.currentTarget.style.background = '#000'}
                 >
                   Confirm &amp; Pay
                 </button>

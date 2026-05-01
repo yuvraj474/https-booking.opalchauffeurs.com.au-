@@ -10,14 +10,28 @@ const Form2 = () => {
 
   const [form, setForm] = useState({
     salutation: 'Mr.', firstName: '', lastName: '',
-    email: '', countryCode: '+91', phone: '',
+    email: '', countryCode: '+61', phone: '',
     flight: '', special: ''
   })
   const [agreed, setAgreed] = useState(false)
+  const [emailError, setEmailError] = useState('')
 
-  const handleChange = (field, val) => setForm(prev => ({ ...prev, [field]: val }))
+  const handleChange = (field, val) => {
+    if (field === 'phone') {
+      val = val.replace(/\D/g, '') // Only numbers allowed
+    }
+    setForm(prev => ({ ...prev, [field]: val }))
+    
+    if (field === 'email') {
+      if (val && !val.endsWith('@gmail.com')) {
+        setEmailError('Only Gmail addresses (@gmail.com) are allowed')
+      } else {
+        setEmailError('')
+      }
+    }
+  }
 
-  const isValid = agreed && form.firstName && form.lastName && form.email && form.phone
+  const isValid = agreed && form.firstName && form.lastName && form.email.endsWith('@gmail.com') && form.phone
 
   const ff = "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
 
@@ -46,7 +60,7 @@ const Form2 = () => {
             <React.Fragment key={i}>
               <span
                 onClick={b.click}
-                style={{ fontSize: '13px', color: b.active ? '#ff3d5a' : '#6b7280', fontWeight: b.active ? '600' : '400', cursor: b.click ? 'pointer' : 'default' }}
+                style={{ fontSize: '13px', color: b.active ? '1f2937' : '#6b7280', fontWeight: b.active ? '600' : '400', cursor: b.click ? 'pointer' : 'default' }}
               >{b.label}</span>
               {i < arr.length - 1 && <ChevronRight size={12} style={{ color: '#d1d5db' }} />}
             </React.Fragment>
@@ -81,7 +95,7 @@ const Form2 = () => {
                 <h3 style={{ fontSize: '20px', fontWeight: '700', color: '#111', margin: 0 }}>
                   {vehicle.name || 'Vehicle'}
                 </h3>
-                <span style={{ background: '#ff3d5a', color: '#fff', fontSize: '11px', fontWeight: '600', padding: '3px 10px', borderRadius: '99px' }}>
+                <span style={{ background: 'black', color: '#fff', fontSize: '11px', fontWeight: '600', padding: '3px 10px', borderRadius: '99px' }}>
                   {state.type || 'Oneway'}
                 </span>
               </div>
@@ -94,7 +108,7 @@ const Form2 = () => {
                 {/* Pickup */}
                 <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '3px' }}>
-                    <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ff3d5a', flexShrink: 0 }} />
+                    <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#000', flexShrink: 0 }} />
                     <div style={{ width: '2px', height: '30px', background: '#e5e7eb', margin: '2px 0' }} />
                   </div>
                   <div style={{ paddingBottom: '12px' }}>
@@ -130,7 +144,7 @@ const Form2 = () => {
               {/* Total Price */}
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <div>
-                  <div style={{ fontSize: '13px', fontWeight: '700', color: '#ff3d5a', marginBottom: '2px' }}>Total Price</div>
+                  <div style={{ fontSize: '13px', fontWeight: '700', color: 'black', marginBottom: '2px' }}>Total Price</div>
                   <div style={{ fontSize: '11px', color: '#9ca3af' }}>Includes GST, Gratuities & Meet services</div>
                 </div>
                 <div style={{ fontSize: '22px', fontWeight: '800', color: '#111' }}>
@@ -192,15 +206,18 @@ const Form2 = () => {
               </div>
 
               {/* Email */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '11px 14px' }}>
-                <Mail size={15} style={{ color: '#9ca3af' }} />
-                <input
-                  type="email"
-                  placeholder="Enter Email Address"
-                  value={form.email}
-                  onChange={e => handleChange('email', e.target.value)}
-                  style={{ border: 'none', outline: 'none', fontSize: '13.5px', color: '#111', background: 'transparent', width: '100%', fontFamily: ff }}
-                />
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', border: `1px solid ${emailError ? '#ef4444' : '#e5e7eb'}`, borderRadius: '8px', padding: '11px 14px' }}>
+                  <Mail size={15} style={{ color: '#9ca3af' }} />
+                  <input
+                    type="email"
+                    placeholder="Enter Email Address (@gmail.com)"
+                    value={form.email}
+                    onChange={e => handleChange('email', e.target.value)}
+                    style={{ border: 'none', outline: 'none', fontSize: '13.5px', color: '#111', background: 'transparent', width: '100%', fontFamily: ff }}
+                  />
+                </div>
+                {emailError && <div style={{ color: '#ef4444', fontSize: '11.5px', marginTop: '4px', fontWeight: '500', paddingLeft: '4px' }}>{emailError}</div>}
               </div>
 
               {/* Phone */}
@@ -250,20 +267,18 @@ const Form2 = () => {
                   onClick={() => setAgreed(!agreed)}
                   style={{
                     width: '18px', height: '18px', borderRadius: '4px', flexShrink: 0, marginTop: '1px',
-                    border: agreed ? '2px solid #ff3d5a' : '2px solid #d1d5db',
-                    background: agreed ? '#ff3d5a' : '#fff',
+                    border: agreed ? '2px solid #000' : '2px solid #d1d5db',
+                    background: agreed ? '#000' : '#fff',
                     display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s'
                   }}
                 >
                   {agreed && <Check size={11} color="#fff" strokeWidth={3} />}
                 </div>
-                <span style={{ fontSize: '12px', color: '#374151', lineHeight: '1.5' }}>
-                  I agree to{' '}
-                  <span style={{ color: '#ff3d5a', cursor: 'pointer', fontWeight: '600' }}>Terms & Conditions</span>,{' '}
-                  <span style={{ color: '#ff3d5a', cursor: 'pointer', fontWeight: '600' }}>Booking Conditions</span>{' '}
-                  and{' '}
-                  <span style={{ color: '#ff3d5a', cursor: 'pointer', fontWeight: '600' }}>Privacy Policy</span>
-                </span>
+
+                <span style={{ color: '#374151', cursor: 'pointer', fontWeight: '600' }}>I agree to Term &condition Booking Conditions Privacy Policy</span>,{' '}
+
+
+
               </div>
 
               {/* Previous + Continue Buttons */}

@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './pages/Navbar'
 import Home from './pages/Home'
@@ -9,6 +9,7 @@ import ContactUs from './pages/ContactUs'
 import Form1 from './components/form1'
 import Form2 from './components/form2'
 import Form3 from './components/form3'
+
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/form1" element={<Form1 />} />
         <Route path="/form2" element={<Form2 />} />
         <Route path="/form3" element={<Form3 />} />
+   
       </Routes>
     </>
   )

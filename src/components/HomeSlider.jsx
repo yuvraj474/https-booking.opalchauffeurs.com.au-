@@ -18,6 +18,7 @@ const HomeSlider = () => {
   const [pickupDate, setPickupDate] = useState(new Date().toISOString().split('T')[0]);
   const [pickupTime, setPickupTime] = useState('');
   const [transferType, setTransferType] = useState('One Way');
+  const [hours, setHours] = useState('3');
   const [fromLocation, setFromLocation] = useState('');
   const [toLocation, setToLocation] = useState('');
   const [passengers, setPassengers] = useState(1);
@@ -35,6 +36,7 @@ const HomeSlider = () => {
       subtitle: 'Professional. Reliable. Global.',
       description: 'Our professional chauffeurs are dedicated to providing you with the highest level of service and comfort.'
     }
+    
   ];
 
   const stats = [
@@ -54,7 +56,7 @@ const HomeSlider = () => {
 
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-    }, 8000); 
+    }, 4000); 
 
     return () => clearInterval(timer);
   }, [slides.length]);
@@ -68,6 +70,7 @@ const HomeSlider = () => {
         date: pickupDate,
         time: pickupTime,
         type: transferType,
+        hours: transferType === 'Hourly' ? hours : null,
         passengers: passengers
       } 
     });
@@ -211,6 +214,26 @@ const HomeSlider = () => {
               </div>
             </div>
 
+            {/* Hours Select (Conditional) */}
+            {transferType === 'Hourly' && (
+              <div className="bg-[#eff1f3] p-4 rounded-xl border border-transparent focus-within:border-[#0d0c0c] focus-within:bg-white transition-all shadow-sm">
+                <div className="relative">
+                  <select 
+                    value={hours}
+                    onChange={(e) => setHours(e.target.value)}
+                    className="w-full bg-transparent text-[15px] font-semibold outline-none cursor-pointer appearance-none pr-8 text-black"
+                  >
+                    {Array.from({ length: 30 }, (_, i) => i + 1).map(h => (
+                      <option key={h} value={h}>{h} Hour{h > 1 ? 's' : ''}</option>
+                    ))}
+                  </select>
+                  <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none">
+                    <ChevronDown size={18} className="text-gray-500" />
+                  </div>
+                </div>
+              </div>
+            )}
+
             <div className="pt-2 text-center">
               <p className="text-[13px] text-gray-500 mb-5 font-medium italic">Chauffeur will wait 15 minutes free of charge.</p>
               <button 
@@ -247,7 +270,7 @@ const HomeSlider = () => {
             key={index}
             onClick={() => setCurrentSlide(index)}
             className={`w-2.5 h-2.5 rounded-full transition-all ${
-              index === currentSlide ? 'bg-[#ff3d5a] w-10' : 'bg-white/50 hover:bg-white'
+              index === currentSlide ? 'bg-[#151314] w-10' : 'bg-white/50 hover:bg-white'
             }`}
           />
         ))}

@@ -78,7 +78,7 @@ const Form1 = () => {
             <React.Fragment key={i}>
               <span
                 onClick={i === 0 ? () => navigate('/') : undefined}
-                style={{ fontSize: '13px', color: i === 1 ? '#ff3d5a' : '#6b7280', fontWeight: i === 1 ? '600' : '400', cursor: i === 0 ? 'pointer' : 'default' }}
+                style={{ fontSize: '13px', color: i === 1 ? '#000' : '#6b7280', fontWeight: i === 1 ? '600' : '400', cursor: i === 0 ? 'pointer' : 'default' }}
               >{label}</span>
               {i < arr.length - 1 && <ChevronRight size={12} style={{ color: '#d1d5db' }} />}
             </React.Fragment>
@@ -170,9 +170,9 @@ const Form1 = () => {
                   </div>
                   <button
                     onClick={() => navigate('/form2', { state: { ...b, vehicle: v } })}
-                    style={{ width: '100%', background: '#ff3d5a', color: '#fff', border: 'none', borderRadius: '8px', padding: '11px 0', fontSize: '14px', fontWeight: '600', cursor: 'pointer', transition: 'background 0.2s' }}
-                    onMouseEnter={e => e.currentTarget.style.background = '#e02f4a'}
-                    onMouseLeave={e => e.currentTarget.style.background = '#ff3d5a'}
+                    style={{ width: '100%', background: 'black', color: '#fff', border: 'none', borderRadius: '8px', padding: '11px 0', fontSize: '14px', fontWeight: '600', cursor: 'pointer', transition: 'background 0.2s' }}
+                    onMouseEnter={e => e.currentTarget.style.background = '#1f2937'}
+                    onMouseLeave={e => e.currentTarget.style.background = '1f2937'}
                   >
                     Book Now
                   </button>

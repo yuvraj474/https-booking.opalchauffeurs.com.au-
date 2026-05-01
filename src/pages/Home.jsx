@@ -4,6 +4,8 @@ import Trust from '../components/trust.jsx'
 import OurFleet from '../components/OurFleet.jsx'
 import Aboutdri from '../components/Aboutdri.jsx'
 import Offerin from '../components/Offerin.jsx'
+import Bookride from '../components/Bookride.jsx'
+import Benifits from '../components/Benifits.jsx'
 
 const Home = () => {
   return (
@@ -27,6 +29,15 @@ const Home = () => {
       <section id="Offerin">
         <Offerin />
       </section>
+
+      <section id="Bookride">
+        <Bookride />
+      </section>
+
+      <section id="Benifits">
+        <Benifits />
+      </section>
+
     </>
   )
 }
