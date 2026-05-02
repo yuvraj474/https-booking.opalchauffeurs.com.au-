@@ -103,7 +103,7 @@ const WhySection = () => (
   <section style={{ background: "#f8f9fb", padding: "80px 20px" }}>
     <div style={{ maxWidth: "1200px", margin: "auto", textAlign: "center" }}>
       <h1 style={{ fontSize: "34px", fontWeight: "700", marginBottom: "10px" }}>
-        Why Travel Smarter with Drivado
+        Why Travel Smarter with chauffeurs
       </h1>
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "20px", marginTop: "40px" }}>

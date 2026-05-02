@@ -9,7 +9,8 @@ import ContactUs from './pages/ContactUs'
 import Form1 from './components/form1'
 import Form2 from './components/form2'
 import Form3 from './components/form3'
-
+import Login from './pages/Login'
+import Profile from './pages/Profile'
 
 const App = () => {
   return (
@@ -24,7 +25,8 @@ const App = () => {
         <Route path="/form1" element={<Form1 />} />
         <Route path="/form2" element={<Form2 />} />
         <Route path="/form3" element={<Form3 />} />
-   
+        <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </>
   )
