@@ -6,6 +6,8 @@ import Aboutdri from '../components/Aboutdri.jsx'
 import Offerin from '../components/Offerin.jsx'
 import Bookride from '../components/Bookride.jsx'
 import Benifits from '../components/Benifits.jsx'
+import Global from '../components/Globalcoverage.jsx'
+import Frequently from '../components/Frequently.jsx'
 
 const Home = () => {
   return (
@@ -38,6 +40,13 @@ const Home = () => {
         <Benifits />
       </section>
 
+      <section id="global">
+        <Global />
+      </section>
+
+      <section id="FAQ">
+        <Frequently />
+      </section>
     </>
   )
 }

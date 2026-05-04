@@ -1,4 +1,3 @@
-
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './pages/Navbar'
 import Home from './pages/Home'
@@ -11,6 +10,11 @@ import Form2 from './components/form2'
 import Form3 from './components/form3'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
+import Bookings from './pages/Bookings'
+import Footer from './pages/Footer'
+import AirportTransfer from './pages/Airport-transfer'
+import CityToCity from './pages/City-to-city'
+import HourlyRentals from './pages/Hourly-rentals'
 
 const App = () => {
   return (
@@ -27,11 +31,14 @@ const App = () => {
         <Route path="/form3" element={<Form3 />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/bookings" element={<Bookings />} />
+        <Route path="/airport-transfers" element={<AirportTransfer />} />
+        <Route path="/city-to-city" element={<CityToCity />} />
+        <Route path="/hourly-rentals" element={<HourlyRentals />} />
       </Routes>
+      <Footer />
     </>
   )
 }
-
-
 
 export default App

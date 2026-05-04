@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { 
-  MapPin, 
-  Calendar, 
-  Clock, 
-  ArrowRight, 
-  ChevronDown, 
-  ShieldCheck, 
+import {
+  MapPin,
+  Calendar,
+  Clock,
+  ArrowRight,
+  ChevronDown,
+  ShieldCheck,
   CreditCard,
   Plane,
   Target
@@ -32,11 +32,10 @@ const HomeSlider = () => {
     },
     {
       image: '/home-bg-2.jpg.webp',
-      title: 'Luxury Chauffeur Services.',
-      subtitle: 'Professional. Reliable. Global.',
-      description: 'Our professional chauffeurs are dedicated to providing you with the highest level of service and comfort.'
+      title: 'Airport Transfers Worldwide.',
+      subtitle: 'Transparent Pricing. On-Time, Every Time.',
+      description: 'For Every Journey, Everywhere. Experience seamless airport transfers, city-to-city rides, and premium chauffeur services across the globe.'
     }
-    
   ];
 
   const stats = [
@@ -56,23 +55,23 @@ const HomeSlider = () => {
 
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-    }, 4000); 
+    }, 4000);
 
     return () => clearInterval(timer);
   }, [slides.length]);
 
   const handleContinue = (e) => {
     e.preventDefault();
-    navigate('/form1', { 
-      state: { 
-        from: fromLocation, 
+    navigate('/form1', {
+      state: {
+        from: fromLocation,
         to: toLocation,
         date: pickupDate,
         time: pickupTime,
         type: transferType,
         hours: transferType === 'Hourly' ? hours : null,
         passengers: passengers
-      } 
+      }
     });
   };
 
@@ -82,13 +81,12 @@ const HomeSlider = () => {
       {slides.map((slide, index) => (
         <div
           key={index}
-          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-            index === currentSlide ? 'opacity-100' : 'opacity-0'
-          }`}
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+            }`}
         >
           <div
             className="absolute inset-0 bg-cover bg-center transition-transform duration-[8000ms] ease-linear"
-            style={{ 
+            style={{
               backgroundImage: `url(${slide.image})`,
               transform: index === currentSlide ? 'scale(1.1)' : 'scale(1)'
             }}
@@ -99,14 +97,14 @@ const HomeSlider = () => {
 
       {/* Hero Content Overlay */}
       <div className="relative z-20 h-full max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center justify-between pt-24 pb-12 lg:py-0 gap-12">
-        
+
         {/* Left Column: Content */}
         <div className="flex-1 text-white space-y-8 animate-fade-in-left">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-sm border border-white/20">
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
             <span className="text-xs font-semibold uppercase tracking-widest text-white">Trusted Worldwide</span>
           </div>
-          
+
           <div className="space-y-4">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
               {slides[currentSlide].title}<br />
@@ -131,14 +129,14 @@ const HomeSlider = () => {
         {/* Right Column: Booking Form Card */}
         <div className="w-full lg:w-[480px] bg-white rounded-3xl p-1 shadow-2xl animate-fade-in-right z-30">
           <form onSubmit={handleContinue} className="bg-[#f8f9fa] rounded-[22px] p-6 space-y-4">
-            
+
             {/* From Field */}
             <div className="flex items-center gap-4 bg-[#eff1f3] p-4 rounded-xl border border-transparent focus-within:border-[#181213] focus-within:bg-white transition-all shadow-sm">
               <div className="text-gray-500"><Plane size={22} className="rotate-45" /></div>
               <div className="flex-1">
                 <label className="block text-[12px] font-bold text-gray-900 leading-none mb-1 uppercase tracking-tight">From</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   placeholder="Pickup location"
                   value={fromLocation}
                   onChange={(e) => setFromLocation(e.target.value)}
@@ -154,8 +152,8 @@ const HomeSlider = () => {
               <div className="text-gray-500"><Plane size={22} className="rotate-135" /></div>
               <div className="flex-1">
                 <label className="block text-[12px] font-bold text-gray-900 leading-none mb-1 uppercase tracking-tight">To</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   placeholder="Drop location"
                   value={toLocation}
                   onChange={(e) => setToLocation(e.target.value)}
@@ -172,8 +170,8 @@ const HomeSlider = () => {
                 <label className="block text-[12px] font-bold text-gray-900 mb-1 uppercase tracking-tight flex items-center gap-1">
                   <Calendar size={14} className="text-[#1c1819]" /> Pickup Date
                 </label>
-                <input 
-                  type="date" 
+                <input
+                  type="date"
                   value={pickupDate}
                   onChange={(e) => setPickupDate(e.target.value)}
                   className="w-full bg-transparent text-[15px] font-semibold outline-none cursor-pointer text-black"
@@ -185,8 +183,8 @@ const HomeSlider = () => {
                 <label className="block text-[12px] font-bold text-gray-900 mb-1 uppercase tracking-tight flex items-center gap-1">
                   <Clock size={14} className="text-[#160e10]" /> Pickup Time
                 </label>
-                <input 
-                  type="time" 
+                <input
+                  type="time"
                   value={pickupTime}
                   onChange={(e) => setPickupTime(e.target.value)}
                   className="w-full bg-transparent text-[15px] font-semibold outline-none cursor-pointer text-black"
@@ -199,7 +197,7 @@ const HomeSlider = () => {
             <div className="bg-[#eff1f3] p-4 rounded-xl border border-transparent focus-within:border-[#0d0c0c] focus-within:bg-white transition-all shadow-sm">
               <label className="block text-[12px] font-bold text-gray-900 mb-1 uppercase tracking-tight">Transfer Type</label>
               <div className="relative">
-                <select 
+                <select
                   value={transferType}
                   onChange={(e) => setTransferType(e.target.value)}
                   className="w-full bg-transparent text-[15px] font-semibold outline-none cursor-pointer appearance-none pr-8 text-black"
@@ -218,7 +216,7 @@ const HomeSlider = () => {
             {transferType === 'Hourly' && (
               <div className="bg-[#eff1f3] p-4 rounded-xl border border-transparent focus-within:border-[#0d0c0c] focus-within:bg-white transition-all shadow-sm">
                 <div className="relative">
-                  <select 
+                  <select
                     value={hours}
                     onChange={(e) => setHours(e.target.value)}
                     className="w-full bg-transparent text-[15px] font-semibold outline-none cursor-pointer appearance-none pr-8 text-black"
@@ -236,7 +234,7 @@ const HomeSlider = () => {
 
             <div className="pt-2 text-center">
               <p className="text-[13px] text-gray-500 mb-5 font-medium italic">Chauffeur will wait 15 minutes free of charge.</p>
-              <button 
+              <button
                 type="submit"
                 className="w-full bg-[#000000] hover:bg-black text-white py-4 rounded-xl font-bold transition-all shadow-lg text-lg active:scale-95 flex items-center justify-center gap-2"
               >
@@ -269,14 +267,14 @@ const HomeSlider = () => {
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-2.5 h-2.5 rounded-full transition-all ${
-              index === currentSlide ? 'bg-[#151314] w-10' : 'bg-white/50 hover:bg-white'
-            }`}
+            className={`w-2.5 h-2.5 rounded-full transition-all ${index === currentSlide ? 'bg-[#151314] w-10' : 'bg-white/50 hover:bg-white'
+              }`}
           />
         ))}
       </div>
 
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @keyframes fade-in-left {
           from { opacity: 0; transform: translateX(-50px); }
           to { opacity: 1; transform: translateX(0); }
@@ -294,5 +292,6 @@ const HomeSlider = () => {
 };
 
 export default HomeSlider;
+
 
 
