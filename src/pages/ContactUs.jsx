@@ -1,118 +1,183 @@
-import { MapPin, Phone } from "lucide-react";
-
-export default function ContactSection() {
+import React from 'react';
+import { MapPin, Phone, Mail, Send, Globe } from "lucide-react";
+import { FaFacebook as Facebook, FaInstagram as Instagram, FaLinkedin as Linkedin, FaYoutube as Youtube } from "react-icons/fa";
+const ContactSection = () => {
   return (
-    <section className="bg-gray-50 py-20 px-6">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
-
-        {/* LEFT SIDE */}
-        <div>
-          <h1 className="text-4xl font-bold mb-8">Contact Us</h1>
-
-          {/* Address */}
-          <div className="flex gap-4 mb-8">
-            <div className="w-12 h-12 flex items-center justify-center rounded-full border border-red-400 text-red-500">
-              <MapPin size={20} />
-            </div>
-            <div>
-              <h3 className="font-semibold text-lg">Address</h3>
-              <p className="text-gray-500 text-sm mt-1">
-                Unit 603, Srijan Tech Park, DN 52, Sector V, Salt Lake,
-                Kolkata-700091, India
-              </p>
-            </div>
-          </div>
-
-          {/* Contact */}
-          <div className="flex gap-4 mb-8">
-            <div className="w-12 h-12 flex items-center justify-center rounded-full border border-red-400 text-red-500">
-              <Phone size={20} />
-            </div>
-            <div>
-              <h3 className="font-semibold text-lg">Contact Details</h3>
-              <p className="text-gray-500 text-sm mt-1">
-                (IN) +91 80375 65049 <br />
-                (UK) +44 1224 015428 <br />
-                (US) +1 337 283 7177
-              </p>
-            </div>
-          </div>
-
-          {/* Social */}
-          <div>
-            <h3 className="font-semibold mb-3">Follow Us:</h3>
-            <div className="flex gap-4">
-              <div className="w-10 h-10 border rounded-full flex items-center justify-center">F</div>
-              <div className="w-10 h-10 border rounded-full flex items-center justify-center">I</div>
-              <div className="w-10 h-10 border rounded-full flex items-center justify-center">L</div>
-              <div className="w-10 h-10 border rounded-full flex items-center justify-center">Y</div>
-            </div>
-          </div>
-        </div>
-
-        {/* RIGHT SIDE FORM */}
-        <div className="bg-gray-100 p-8 rounded-2xl shadow-sm">
-          <h2 className="text-xl font-semibold mb-6">
-            Leave Us Your Info.
-          </h2>
-
-          <form className="space-y-4">
-            <input
-              type="text"
-              placeholder="Your Name"
-              className="w-full p-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-red-400"
-            />
-
-            <input
-              type="email"
-              placeholder="Email Address"
-              className="w-full p-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-red-400"
-            />
-
-            <textarea
-              placeholder="Comment"
-              rows="4"
-              className="w-full p-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-red-400"
-            ></textarea>
-
-            <div className="flex items-center gap-2 text-sm">
-              <input type="checkbox" />
-              <span>
-                You agree to our friendly{" "}
-                <span className="text-red-500">privacy policy</span>
-              </span>
-            </div>
-
-            <button className="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-lg flex items-center gap-2">
-              Send Message →
-            </button>
-          </form>
-        </div>
-      </div>
-
-      {/* NEWSLETTER SECTION */}
-      <div className="max-w-7xl mx-auto mt-20 bg-white p-8 rounded-2xl shadow flex flex-col md:flex-row justify-between items-center gap-6">
+    <section className="bg-white py-16 md:py-32 px-6 font-sans">
+      <div className="max-w-7xl mx-auto">
         
-        <div>
-          <h2 className="text-2xl font-bold">
-            <span className="text-red-500">Sign up</span> for our newsletter
-          </h2>
-          <p className="text-gray-500 text-sm mt-2">
-            Stay in the loop with everything you need to know.
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-20 md:mb-32 space-y-6">
+          <span className="bg-black text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest inline-block">Support</span>
+          <h1 className="text-3xl md:text-6xl font-black text-gray-900 tracking-tighter leading-tight">
+            We're Here to Help.
+          </h1>
+          <p className="text-gray-500 font-medium text-base md:text-lg italic">
+            "Your journey is our priority. Reach out to our dedicated concierge team anytime, anywhere."
           </p>
         </div>
 
-        <div className="flex w-full md:w-auto gap-3">
-          <input
-            type="email"
-            placeholder="Enter your email"
-            className="p-3 border rounded-lg w-full md:w-80 focus:outline-none"
-          />
-          <button className="bg-red-500 text-white px-6 rounded-lg">
-            Subscribe
-          </button>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+          
+          {/* LEFT SIDE: Contact Info */}
+          <div className="space-y-12">
+            <div className="space-y-8">
+              <h2 className="text-2xl md:text-4xl font-black text-gray-900 tracking-tighter uppercase leading-none">Contact Information</h2>
+              <p className="text-gray-400 font-medium text-sm md:text-base leading-relaxed">
+                Connect with our global offices. Our support team is available 24/7 to ensure your travel experience is seamless.
+              </p>
+            </div>
+
+            <div className="space-y-8">
+              {/* Address */}
+              <div className="flex gap-6 group">
+                <div className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-3xl bg-gray-50 border border-gray-100 text-black group-hover:bg-black group-hover:text-white transition-all duration-300">
+                  <MapPin size={24} />
+                </div>
+                <div className="space-y-1">
+                  <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Global Headquarters</h3>
+                  <p className="text-[14px] md:text-[16px] font-bold text-gray-900 leading-relaxed">
+                    Unit 603, Srijan Tech Park, DN 52, <br className="hidden md:block" />
+                    Sector V, Salt Lake, Kolkata-700091, India
+                  </p>
+                </div>
+              </div>
+
+              {/* Phone */}
+              <div className="flex gap-6 group">
+                <div className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-3xl bg-gray-50 border border-gray-100 text-black group-hover:bg-black group-hover:text-white transition-all duration-300">
+                  <Phone size={24} />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Phone Support</h3>
+                  <div className="space-y-1">
+                    <p className="text-[14px] md:text-[16px] font-bold text-gray-900 flex items-center gap-2">
+                      <span className="text-gray-400 text-xs">(IN)</span> +91 80375 65049
+                    </p>
+                    <p className="text-[14px] md:text-[16px] font-bold text-gray-900 flex items-center gap-2">
+                      <span className="text-gray-400 text-xs">(UK)</span> +44 1224 015428
+                    </p>
+                    <p className="text-[14px] md:text-[16px] font-bold text-gray-900 flex items-center gap-2">
+                      <span className="text-gray-400 text-xs">(US)</span> +1 337 283 7177
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Email */}
+              <div className="flex gap-6 group">
+                <div className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-3xl bg-gray-50 border border-gray-100 text-black group-hover:bg-black group-hover:text-white transition-all duration-300">
+                  <Mail size={24} />
+                </div>
+                <div className="space-y-1">
+                  <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Email Correspondence</h3>
+                  <a href="mailto:support@drivado.com" className="text-[14px] md:text-[16px] font-bold text-gray-900 hover:underline">
+                    support@drivado.com
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Social */}
+            <div className="pt-8 border-t border-gray-100">
+              <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-6">Connect Globally</h3>
+              <div className="flex gap-4">
+                {[Facebook, Instagram, Linkedin, Youtube].map((Icon, i) => (
+                  <button key={i} className="w-12 h-12 rounded-2xl border border-gray-100 flex items-center justify-center text-gray-400 hover:bg-black hover:text-white hover:border-black transition-all">
+                    <Icon size={20} />
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT SIDE: Contact Form */}
+          <div className="bg-[#f8f9fa] rounded-[40px] md:rounded-[60px] p-8 md:p-12 lg:p-16 border border-gray-100 shadow-xl">
+            <div className="mb-10">
+              <h2 className="text-2xl md:text-3xl font-black text-gray-900 tracking-tighter uppercase leading-none mb-4">Send a Message</h2>
+              <p className="text-gray-400 font-medium text-sm italic">Share your inquiries or feedback with us.</p>
+            </div>
+
+            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-2">Your Name</label>
+                  <input
+                    type="text"
+                    placeholder="Enter your name"
+                    className="w-full bg-white border border-gray-100 rounded-2xl px-6 py-4 text-sm font-bold focus:outline-none focus:border-black transition-all"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-2">Email Address</label>
+                  <input
+                    type="email"
+                    placeholder="name@email.com"
+                    className="w-full bg-white border border-gray-100 rounded-2xl px-6 py-4 text-sm font-bold focus:outline-none focus:border-black transition-all"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-2">Subject</label>
+                <input
+                  type="text"
+                  placeholder="How can we help?"
+                  className="w-full bg-white border border-gray-100 rounded-2xl px-6 py-4 text-sm font-bold focus:outline-none focus:border-black transition-all"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-2">Message</label>
+                <textarea
+                  placeholder="Describe your inquiry..."
+                  rows="5"
+                  className="w-full bg-white border border-gray-100 rounded-2xl px-6 py-4 text-sm font-bold focus:outline-none focus:border-black transition-all resize-none"
+                />
+              </div>
+
+              <div className="flex items-start gap-4 py-2">
+                <div className="relative flex items-center">
+                   <input type="checkbox" className="w-5 h-5 rounded-lg border-2 border-gray-200 focus:ring-0 accent-black cursor-pointer" />
+                </div>
+                <p className="text-[12px] font-medium text-gray-500 leading-relaxed">
+                  I agree to the <span className="text-black font-black underline cursor-pointer">Privacy Policy</span> and consent to my data being processed.
+                </p>
+              </div>
+
+              <button className="w-full bg-black text-white py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-2xl shadow-black/10 hover:bg-gray-800 active:scale-95 transition-all flex items-center justify-center gap-3">
+                Send Message <Send size={18} />
+              </button>
+            </form>
+          </div>
         </div>
+
+        {/* Newsletter Section */}
+        <div className="mt-20 md:mt-32 p-8 md:p-16 bg-gray-50 rounded-[40px] md:rounded-[60px] border border-gray-100 flex flex-col lg:flex-row justify-between items-center gap-10">
+          <div className="space-y-4 max-w-xl text-center lg:text-left">
+            <h2 className="text-2xl md:text-4xl font-black text-gray-900 tracking-tighter uppercase leading-none">
+              Stay in the Loop.
+            </h2>
+            <p className="text-gray-400 font-medium text-sm md:text-base italic">
+              Subscribe to our newsletter for exclusive offers and travel insights.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row w-full lg:w-auto gap-4">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="bg-white border border-gray-100 rounded-2xl px-6 py-4 text-sm font-bold focus:outline-none focus:border-black transition-all w-full sm:w-80"
+            />
+            <button className="bg-black text-white px-10 py-4 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-gray-800 transition-all shadow-xl shadow-black/5">
+              Subscribe
+            </button>
+          </div>
+        </div>
+
       </div>
     </section>
   );
-}
+};
+
+export default ContactSection;

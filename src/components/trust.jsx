@@ -17,34 +17,19 @@ const partners = [
 ];
 
 const PartnerCard = ({ p }) => (
-  <div style={{
-    display: "flex",
-    alignItems: "center",
-    gap: "16px",
-    background: p.cardBg,
-    border: `1.5px solid ${p.border}`,
-    borderRadius: "14px",
-    padding: "18px 28px",
-    minWidth: "230px",
-    flexShrink: 0,
-    boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
-  }}>
-    <div style={{
-      width: "54px",
-      height: "54px",
-      borderRadius: "50%",
-      background: p.bg,
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      color: "#fff",
-    }}>
+  <div 
+    className="flex items-center gap-4 px-6 py-4 rounded-2xl shadow-sm border transition-all hover:shadow-md shrink-0"
+    style={{ background: p.cardBg, borderColor: p.border }}
+  >
+    <div 
+      className="w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center text-white shadow-inner"
+      style={{ background: p.bg }}
+    >
       {p.icon}
     </div>
-
     <div>
-      <div style={{ fontSize: "16px", fontWeight: "700" }}>{p.name}</div>
-      <div style={{ fontSize: "12px", color: "#6b7280" }}>{p.sub}</div>
+      <div className="text-[14px] md:text-[16px] font-black text-gray-900 tracking-tight">{p.name}</div>
+      <div className="text-[10px] md:text-[12px] font-bold text-gray-400 uppercase tracking-widest">{p.sub}</div>
     </div>
   </div>
 );
@@ -53,12 +38,13 @@ const Trust = () => {
   const doubled = [...partners, ...partners];
 
   return (
-    <section style={{ background: "#f8f9fb", padding: "50px 0", overflow: "hidden" }}>
-      <h2 style={{ textAlign: "center", marginBottom: "30px", fontSize: "22px", fontWeight: "700" }}>
-        Our Trusted Partners
-      </h2>
+    <section className="bg-white py-10 md:py-20 overflow-hidden font-sans">
+      <div className="max-w-7xl mx-auto px-6 mb-8 md:mb-16">
+         <span className="bg-black text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest inline-block mb-3">Partnership</span>
+         <h2 className="text-2xl md:text-5xl font-black text-gray-900 tracking-tighter">Our Trusted Partners.</h2>
+      </div>
 
-      <div style={{ display: "flex", gap: "20px", animation: "marquee 30s linear infinite", width: "max-content" }}>
+      <div className="flex gap-6 animate-marquee hover:pause-marquee cursor-default" style={{ width: "max-content" }}>
         {doubled.map((p, i) => (
           <PartnerCard key={i} p={p} />
         ))}
@@ -69,6 +55,8 @@ const Trust = () => {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
+        .animate-marquee { animation: marquee 40s linear infinite; }
+        .hover\\:pause-marquee:hover { animation-play-state: paused; }
       `}</style>
     </section>
   );
@@ -79,44 +67,42 @@ const Trust = () => {
 const features = [
   {
     title: "Quality Assurance",
-    desc: "We guarantee safety, professionalism and satisfaction.",
-    icon: <ShieldCheck size={22} />,
+    desc: "We guarantee safety, professionalism and absolute satisfaction for every mile.",
+    icon: <ShieldCheck size={24} />,
   },
   {
-    title: "24×7 Services",
-    desc: "Available anytime with live support.",
-    icon: <MessageCircle size={22} />,
+    title: "24×7 Concierge",
+    desc: "Our dedicated support team is available anytime with premium live assistance.",
+    icon: <MessageCircle size={24} />,
   },
   {
     title: "Global Network",
-    desc: "Serving 65+ countries worldwide.",
-    icon: <MapPin size={22} />,
+    desc: "Extensive coverage serving 65+ countries and 425+ cities worldwide.",
+    icon: <MapPin size={24} />,
   },
   {
-    title: "No Hidden Cost",
-    desc: "Transparent pricing always.",
-    icon: <DollarSign size={22} />,
+    title: "Transparent Pricing",
+    desc: "Honest, all-inclusive pricing with zero hidden costs or surprise fees.",
+    icon: <DollarSign size={24} />,
   },
 ];
 
 const WhySection = () => (
-  <section style={{ background: "#f8f9fb", padding: "80px 20px" }}>
-    <div style={{ maxWidth: "1200px", margin: "auto", textAlign: "center" }}>
-      <h1 style={{ fontSize: "34px", fontWeight: "700", marginBottom: "10px" }}>
-        Why Travel Smarter with chauffeurs
-      </h1>
+  <section className="bg-white py-12 md:py-24 px-6 font-sans">
+    <div className="max-w-7xl mx-auto">
+      <div className="text-center max-w-3xl mx-auto mb-12 md:mb-20">
+        <h1 className="text-2xl md:text-5xl font-black text-gray-900 tracking-tighter mb-3">
+          Why Travel Smarter with Drivado?
+        </h1>
+        <p className="text-gray-500 font-medium italic text-sm">Elevating the standards of premium ground mobility.</p>
+      </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "20px", marginTop: "40px" }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-10">
         {features.map((item, i) => (
-          <div key={i} style={{
-            background: "#fff",
-            padding: "25px",
-            borderRadius: "14px",
-            boxShadow: "0 4px 12px rgba(0,0,0,0.05)"
-          }}>
-            <div style={{ marginBottom: "10px", color: "#16a34a" }}>{item.icon}</div>
-            <h3 style={{ fontWeight: "600" }}>{item.title}</h3>
-            <p style={{ fontSize: "14px", color: "#6b7280" }}>{item.desc}</p>
+          <div key={i} className="group bg-[#f8f9fb] p-8 md:p-10 rounded-[32px] border border-transparent hover:border-gray-100 hover:bg-white hover:shadow-2xl transition-all duration-500">
+            <div className="mb-6 text-black transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6 inline-block">{item.icon}</div>
+            <h3 className="text-xl font-black text-gray-900 tracking-tight mb-3 uppercase">{item.title}</h3>
+            <p className="text-[13px] md:text-[14px] font-medium text-gray-400 leading-relaxed italic">{item.desc}</p>
           </div>
         ))}
       </div>
@@ -124,58 +110,42 @@ const WhySection = () => (
   </section>
 );
 
-/* ---------------- STATS SECTION (EXACT IMAGE STYLE) ---------------- */
+/* ---------------- STATS SECTION ---------------- */
 
 const StatsSection = () => {
   return (
-    <section style={{
-      position: "relative",
-      padding: "100px 20px",
-      textAlign: "center",
-      backgroundColor: "#f5f5f5"
-    }}>
-
+    <section className="relative py-20 md:py-32 px-6 bg-gray-50 overflow-hidden">
       {/* Background Map */}
-      <div style={{
-        position: "absolute",
-        inset: 0,
-        backgroundImage: "url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/1200px-World_map_-_low_resolution.svg.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        opacity: 0.15
-      }}></div>
+      <div 
+        className="absolute inset-0 opacity-10 grayscale pointer-events-none"
+        style={{
+          backgroundImage: "url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/1200px-World_map_-_low_resolution.svg.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
 
       {/* Content */}
-      <div style={{
-        position: "relative",
-        maxWidth: "1100px",
-        margin: "auto",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center"
-      }}>
-
-        {/* Item */}
-        <div>
-          <h1 style={{ fontSize: "56px", fontWeight: "700" }}>425+</h1>
-          <p style={{ color: "#6b7280" }}>Cities Coverage</p>
+      <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6 items-center text-center">
+        {/* Item 1 */}
+        <div className="space-y-1">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 tracking-tighter">425+</h1>
+          <p className="text-[10px] md:text-[14px] font-bold text-gray-400 uppercase tracking-widest italic">Cities Coverage</p>
         </div>
 
-        {/* Divider */}
-        <div style={{ width: "1px", height: "80px", background: "#ef4444" }}></div>
-
-        <div>
-          <h1 style={{ fontSize: "56px", fontWeight: "700" }}>2900+</h1>
-          <p style={{ color: "#6b7280" }}>Fleet Partners</p>
+        {/* Item 2 */}
+        <div className="space-y-2 relative">
+          <div className="hidden md:block absolute left-[-1px] top-1/2 -translate-y-1/2 w-px h-24 bg-gradient-to-b from-transparent via-red-500 to-transparent" />
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 tracking-tighter">2900+</h1>
+          <p className="text-[12px] md:text-[14px] font-bold text-gray-400 uppercase tracking-widest italic">Fleet Partners</p>
+          <div className="hidden md:block absolute right-[-1px] top-1/2 -translate-y-1/2 w-px h-24 bg-gradient-to-b from-transparent via-red-500 to-transparent" />
         </div>
 
-        <div style={{ width: "1px", height: "80px", background: "#ef4444" }}></div>
-
-        <div>
-          <h1 style={{ fontSize: "56px", fontWeight: "700" }}>9+</h1>
-          <p style={{ color: "#6b7280" }}>Years of Journey</p>
+        {/* Item 3 */}
+        <div className="space-y-2">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 tracking-tighter">10+</h1>
+          <p className="text-[12px] md:text-[14px] font-bold text-gray-400 uppercase tracking-widest italic">Years of Excellence</p>
         </div>
-
       </div>
     </section>
   );
@@ -185,10 +155,10 @@ const StatsSection = () => {
 
 export default function HomePage() {
   return (
-    <>
+    <div className="font-sans">
       <Trust />
       <WhySection />
       <StatsSection />
-    </>
+    </div>
   );
 }

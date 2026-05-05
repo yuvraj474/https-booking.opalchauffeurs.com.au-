@@ -55,12 +55,12 @@ const Frequently = () => {
       <div className="max-w-6xl mx-auto">
         
         {/* Header */}
-        <div className="text-center mb-16 space-y-4">
-          <h2 className="text-4xl md:text-6xl font-bold text-gray-900 tracking-tight">
+        <div className="text-center mb-12 md:mb-16 space-y-3">
+          <h2 className="text-2xl md:text-6xl font-bold text-gray-900 tracking-tight">
             Any Questions? Look Here
           </h2>
           {!showAll && (
-            <p className="text-gray-500 text-lg md:text-xl font-medium">
+            <p className="text-gray-500 text-sm md:text-xl font-medium">
               Find quick answers to the most common questions about our chauffeur services.
             </p>
           )}
@@ -75,9 +75,9 @@ const Frequently = () => {
             >
               <button 
                 onClick={() => toggleAccordion(index)}
-                className="w-full flex items-center justify-between p-6 md:p-8 text-left group"
+                className="w-full flex items-center justify-between p-5 md:p-8 text-left group"
               >
-                <span className="text-lg md:text-xl font-semibold text-gray-900 group-hover:text-black transition-colors">
+                <span className="text-sm md:text-xl font-semibold text-gray-900 group-hover:text-black transition-colors">
                   {faq.question}
                 </span>
                 <div className="shrink-0 ml-4">

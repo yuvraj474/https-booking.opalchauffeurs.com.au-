@@ -58,166 +58,146 @@ const Form1 = () => {
   ]
 
   const inclusions = [
-    { icon: <Timer size={14} />, title: 'Waiting Time Policy', desc: 'Free 60 minutes waiting time after flight landing for airport pickups. 15 minutes waiting time for all other pickups.' },
-    { icon: <Info size={14} />, title: 'Travel Details Required', desc: 'Provide accurate travel details for smooth pickup. Incorrect or missing details may lead to service issues.' },
-    { icon: <Users size={14} />, title: 'Capacity Guidelines', desc: 'Follow guest and luggage limits for safety. Choose a larger class if unsure to avoid service denial.' },
-    { icon: <Car size={14} />, title: 'Vehicle Information', desc: 'The vehicle images are just for reference. You may get a different vehicle of similar quality depending on destination.' },
-    { icon: <Briefcase size={14} />, title: 'Inclusive Pricing', desc: 'All prices include GST, gratuities, meet and greet services.' },
-    { icon: <Clock size={14} />, title: 'Start Time', desc: 'Time and Kms for rental service starts when the vehicles leaves the garage and is calculated till the car reaches back to garage.' },
+    { icon: <Timer size={14} />, title: 'Waiting Time Policy', desc: 'Free 60 minutes waiting time after flight landing for airport pickups.' },
+    { icon: <Info size={14} />, title: 'Travel Details', desc: 'Provide accurate travel details for smooth pickup.' },
+    { icon: <Users size={14} />, title: 'Capacity Guidelines', desc: 'Follow guest and luggage limits for safety.' },
+    { icon: <Car size={14} />, title: 'Vehicle Information', desc: 'The vehicle images are just for reference.' },
+    { icon: <Briefcase size={14} />, title: 'Inclusive Pricing', desc: 'All prices include GST, gratuities, meet and greet.' },
   ]
 
-  const s = { fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }
-
   return (
-    <div style={{ ...s, minHeight: '100vh', background: '#f2f3f5', paddingTop: '64px' }}>
-
+    <div className="min-h-screen bg-[#f8f9fa] pt-20 pb-12 font-sans">
+      
       {/* Breadcrumb */}
-      <div style={{ background: '#fff', borderBottom: '1px solid #e5e7eb' }}>
-        <div style={{ maxWidth: '1160px', margin: '0 auto', padding: '10px 20px', display: 'flex', alignItems: 'center', gap: '4px' }}>
-          {['Home', 'Vehicles', 'Details', 'Summary', 'Overview'].map((label, i, arr) => (
+      <div className="bg-white border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-3 flex items-center gap-2 overflow-x-auto no-scrollbar">
+          {['Home', 'Vehicles', 'Details', 'Summary'].map((label, i, arr) => (
             <React.Fragment key={i}>
               <span
                 onClick={i === 0 ? () => navigate('/') : undefined}
-                style={{ fontSize: '13px', color: i === 1 ? '#000' : '#6b7280', fontWeight: i === 1 ? '600' : '400', cursor: i === 0 ? 'pointer' : 'default' }}
-              >{label}</span>
-              {i < arr.length - 1 && <ChevronRight size={12} style={{ color: '#d1d5db' }} />}
+                className={`text-[12px] md:text-sm whitespace-nowrap ${i === 1 ? 'text-black font-bold' : 'text-gray-400 font-medium hover:text-black cursor-pointer'}`}
+              >
+                {label}
+              </span>
+              {i < arr.length - 1 && <ChevronRight size={14} className="text-gray-300 shrink-0" />}
             </React.Fragment>
           ))}
         </div>
       </div>
 
-      <div style={{ maxWidth: '1160px', margin: '0 auto', padding: '16px 20px' }}>
+      <div className="max-w-7xl mx-auto px-4 md:px-6 mt-6 md:mt-10">
 
         {/* ── Top Summary Card ── */}
-        <div style={{ background: '#fff', borderRadius: '12px', border: '1px solid #e5e7eb', padding: '16px 20px', marginBottom: '16px', boxShadow: '0 1px 4px rgba(0,0,0,0.05)' }}>
-          {/* Row 1 */}
-          <div style={{ display: 'flex', gap: '8px', marginBottom: '12px', flexWrap: 'wrap' }}>
+        <div className="bg-white rounded-3xl border border-gray-100 p-6 md:p-8 mb-8 shadow-sm">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
             {[
-              { icon: <MapPin size={14} style={{ color: '#9ca3af' }} />, text: b.from || 'Jaipur, Rajasthan, India', flex: true },
-              { icon: <MapPin size={14} style={{ color: '#9ca3af' }} />, text: b.to || 'Delhi, India', flex: true },
-              { icon: <Calendar size={14} style={{ color: '#9ca3af' }} />, text: fmt(b.date) },
-              { icon: <Clock size={14} style={{ color: '#9ca3af' }} />, text: fmtT(b.time) },
+              { icon: <MapPin size={14} className="text-black" />, text: b.from || 'Location A' },
+              { icon: <MapPin size={14} className="text-black" />, text: b.to || 'Location B' },
+              { icon: <Calendar size={14} className="text-black" />, text: fmt(b.date) },
+              { icon: <Clock size={14} className="text-black" />, text: fmtT(b.time) },
             ].map((item, i) => (
-              <div key={i} style={{
-                flex: item.flex ? 1 : 'none', minWidth: item.flex ? '180px' : 'auto',
-                display: 'flex', alignItems: 'center', gap: '7px',
-                border: '1px solid #e5e7eb', borderRadius: '8px', padding: '8px 14px',
-                background: '#fff', whiteSpace: 'nowrap'
-              }}>
-                {item.icon}
-                <span style={{ fontSize: '13.5px', color: '#111', fontWeight: '400', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                  {item.text}
-                </span>
+              <div key={i} className="flex items-center gap-3 bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 overflow-hidden">
+                <div className="shrink-0">{item.icon}</div>
+                <span className="text-[12px] font-bold text-gray-900 truncate">{item.text}</span>
               </div>
             ))}
           </div>
-          {/* Row 2 */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
+          
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-3 pt-2">
             {[
-              { icon: <Users size={13} style={{ color: '#9ca3af' }} />, text: 'INR' },
-              { icon: <Users size={13} style={{ color: '#9ca3af' }} />, text: `${b.passengers || 1} pax` },
-              { icon: <Gauge size={13} style={{ color: '#9ca3af' }} />, text: 'Approx. 268.83 km' },
-              { icon: <Clock size={13} style={{ color: '#9ca3af' }} />, text: 'Approx. 5 hr 6 min' },
+              { icon: <Users size={14} />, text: `${b.passengers || 1} Passengers` },
+              { icon: <Gauge size={14} />, text: 'Approx. 268 km' },
+              { icon: <Clock size={14} />, text: 'Approx. 5 hr 6 min' },
             ].map((item, i) => (
-              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                {item.icon}
-                <span style={{ fontSize: '12.5px', color: '#374151' }}>{item.text}</span>
+              <div key={i} className="flex items-center gap-2 text-gray-400 text-[11px] font-black uppercase tracking-widest">
+                {item.icon} <span>{item.text}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* ── Two-column ── */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 308px', gap: '16px', alignItems: 'start' }}>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
-          {/* LEFT: Vehicle Cards */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          {/* LEFT: Vehicle Cards (8 cols) */}
+          <div className="lg:col-span-8 space-y-4">
+            <h2 className="text-xl font-black text-gray-900 tracking-tight mb-4">Select Your Fleet</h2>
             {vehicles.map((v) => (
-              <div key={v.id}
-                style={{ background: '#fff', borderRadius: '10px', border: '1px solid #e5e7eb', display: 'flex', overflow: 'hidden', boxShadow: '0 1px 3px rgba(0,0,0,0.04)', transition: 'box-shadow 0.2s' }}
-                onMouseEnter={e => e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.1)'}
-                onMouseLeave={e => e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.04)'}
-              >
+              <div key={v.id} className="group bg-white rounded-[24px] border border-gray-100 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col md:flex-row">
                 {/* Car Image */}
-                <div style={{ width: '170px', flexShrink: 0, background: '#f5f6f8', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <img src={v.img} alt={v.name}
-                    style={{ width: '170px', height: '130px', objectFit: 'cover', display: 'block' }}
-                    onError={e => { e.target.style.display = 'none'; e.target.parentNode.innerHTML = '<div style="font-size:50px;text-align:center;padding:24px;color:#ccc">🚗</div>' }}
-                  />
+                <div className="w-full md:w-56 h-40 md:h-auto bg-gray-50 overflow-hidden flex items-center justify-center border-b md:border-b-0 md:border-r border-gray-50">
+                  <img src={v.img} alt={v.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                 </div>
 
-                {/* Middle */}
-                <div style={{ flex: 1, padding: '16px 18px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '6px' }}>
-                  <h3 style={{ fontSize: '17px', fontWeight: '700', color: '#111', margin: 0, letterSpacing: '0.1px' }}>{v.name}</h3>
-                  <div style={{ display: 'flex', gap: '16px' }}>
-                    <span style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '13px', color: '#374151' }}>
-                      <Users size={13} style={{ color: '#e57373' }} /> {v.pax} Pax
+                {/* Content */}
+                <div className="flex-1 p-5 md:p-8 flex flex-col justify-center space-y-3">
+                  <div>
+                    <h3 className="text-lg md:text-2xl font-black text-gray-900 tracking-tight uppercase">{v.name}</h3>
+                    <p className="text-[11px] md:text-[13px] font-medium text-gray-400 leading-relaxed mt-1 italic">{v.desc}</p>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="flex items-center gap-2 bg-gray-50 px-2.5 py-1 rounded-full text-[9px] font-black uppercase text-gray-600">
+                      <Users size={10} className="text-black" /> {v.pax} Pax
                     </span>
-                    <span style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '13px', color: '#374151' }}>
-                      <Briefcase size={13} style={{ color: '#e57373' }} /> {v.bags} Luggage
+                    <span className="flex items-center gap-2 bg-gray-50 px-2.5 py-1 rounded-full text-[9px] font-black uppercase text-gray-600">
+                      <Briefcase size={10} className="text-black" /> {v.bags} Luggage
                     </span>
                   </div>
-                  <p style={{ fontSize: '12.5px', color: '#6b7280', margin: 0, lineHeight: '1.5' }}>{v.desc}</p>
                 </div>
 
-                {/* Right: Price + Button */}
-                <div style={{ width: '195px', flexShrink: 0, borderLeft: '1px solid #f0f0f0', padding: '16px 18px', display: 'flex', flexDirection: 'column', alignItems: 'flex-end', justifyContent: 'space-between' }}>
-                  <div style={{ textAlign: 'right' }}>
-                    <div style={{ fontSize: '17px', fontWeight: '700', color: '#111', lineHeight: 1.2 }}>{v.price}</div>
-                    <div style={{ fontSize: '11px', color: '#9ca3af', marginTop: '4px', lineHeight: '1.6', textAlign: 'right' }}>
-                      Includes GST,<br />Gratuities, Meet &<br />Greet services
-                    </div>
+                {/* Price/Button */}
+                <div className="w-full md:w-56 p-5 md:p-8 bg-gray-50/50 md:bg-white flex flex-row md:flex-col items-center md:items-end justify-between border-t md:border-t-0 md:border-l border-gray-50">
+                  <div className="text-right">
+                    <p className="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-0.5">Total</p>
+                    <p className="text-lg font-black text-gray-900 tracking-tighter">{v.price}</p>
                   </div>
                   <button
                     onClick={() => navigate('/form2', { state: { ...b, vehicle: v } })}
-                    style={{ width: '100%', background: 'black', color: '#fff', border: 'none', borderRadius: '8px', padding: '11px 0', fontSize: '14px', fontWeight: '600', cursor: 'pointer', transition: 'background 0.2s' }}
-                    onMouseEnter={e => e.currentTarget.style.background = '#1f2937'}
-                    onMouseLeave={e => e.currentTarget.style.background = '1f2937'}
+                    className="bg-black text-white px-6 py-2.5 rounded-xl font-black text-[9px] uppercase tracking-[0.2em] shadow-xl shadow-black/10 hover:bg-gray-800 active:scale-95 transition-all whitespace-nowrap"
                   >
-                    Book Now
+                    Select Ride
                   </button>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* RIGHT: Sidebar */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', position: 'sticky', top: '76px' }}>
-
-            {/* Green Cancellation Card */}
-            <div style={{ background: '#f0fdf4', border: '1.5px solid #86efac', borderRadius: '12px', padding: '16px', display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-              <div style={{ background: '#22c55e', borderRadius: '50%', width: '38px', height: '38px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <ShieldCheck size={19} color="#fff" />
+          {/* RIGHT: Sidebar (4 cols) */}
+          <div className="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
+            {/* Cancellation Card */}
+            <div className="bg-emerald-50 border border-emerald-100 rounded-[32px] p-8 flex gap-6 items-start">
+              <div className="w-12 h-12 rounded-full bg-emerald-500 flex items-center justify-center text-white shrink-0 shadow-lg shadow-emerald-200">
+                <ShieldCheck size={24} />
               </div>
               <div>
-                <div style={{ fontSize: '13.5px', fontWeight: '700', color: '#15803d', marginBottom: '5px', lineHeight: '1.3' }}>
-                  Free Cancellation 24-Hour Policy
-                </div>
-                <div style={{ fontSize: '12px', color: '#166534', lineHeight: '1.6' }}>
-                  Flexible booking! Cancel up to 24 hours before the ride starts to receive a <strong>100% refund</strong>
-                </div>
+                <h4 className="font-black text-emerald-900 text-sm uppercase tracking-tight mb-2">Free Cancellation</h4>
+                <p className="text-emerald-700/80 text-xs font-medium leading-relaxed">
+                  Cancel up to 24 hours before your ride for a <strong>100% refund</strong>. Professional & Reliable.
+                </p>
               </div>
             </div>
 
             {/* Journey Inclusions */}
-            <div style={{ background: '#fff', borderRadius: '12px', border: '1px solid #e5e7eb', overflow: 'hidden', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
-              <div style={{ padding: '14px 18px', borderBottom: '1px solid #f0f0f0', textAlign: 'center' }}>
-                <h4 style={{ fontSize: '14px', fontWeight: '700', color: '#111', margin: 0 }}>Your Journey Inclusions</h4>
+            <div className="bg-white rounded-[32px] border border-gray-100 overflow-hidden shadow-sm">
+              <div className="p-6 md:p-8 border-b border-gray-50 text-center">
+                <h4 className="text-lg font-black text-gray-900 uppercase tracking-tight">Your Inclusions</h4>
               </div>
-              {inclusions.map((item, i) => (
-                <div key={i} style={{ display: 'flex', gap: '11px', alignItems: 'flex-start', padding: '12px 16px', borderBottom: i < inclusions.length - 1 ? '1px solid #f7f7f7' : 'none' }}>
-                  <div style={{ width: '28px', height: '28px', flexShrink: 0, borderRadius: '50%', background: '#fff5f5', border: '1px solid #fecdd3', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#e57373', marginTop: '1px' }}>
-                    {item.icon}
+              <div className="p-4 space-y-2">
+                {inclusions.map((item, i) => (
+                  <div key={i} className="flex gap-4 p-4 rounded-2xl hover:bg-gray-50 transition-colors">
+                    <div className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center shrink-0">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <p className="text-[12px] font-black text-gray-900 uppercase tracking-tight">{item.title}</p>
+                      <p className="text-[11px] text-gray-400 font-medium leading-relaxed mt-1">{item.desc}</p>
+                    </div>
                   </div>
-                  <div>
-                    <div style={{ fontSize: '13px', fontWeight: '600', color: '#111', marginBottom: '2px' }}>{item.title}</div>
-                    <div style={{ fontSize: '11.5px', color: '#6b7280', lineHeight: '1.55' }}>{item.desc}</div>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-
           </div>
+
         </div>
       </div>
     </div>
